@@ -26,6 +26,7 @@ Template.Main = {
         
         this.renderer = new THREE.WebGLRenderer(); // or canvas, svg
     	this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.container.appendChild(this.renderer.domElement);
         
         this.parentObj = new THREE.Object3D();
         this.scene.add(this.parentObj);
