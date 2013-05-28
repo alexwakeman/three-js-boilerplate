@@ -57,8 +57,34 @@ Template.Main = {
         var intersects = raycaster.intersectObject(parent);
         return intersects;
     },
-    
-    
+                                   
+    collision : function(a, b) { // both a and b are THREE.Mesh objects with radius property too!
+        var aPos = {};
+        aPos.x = a.position.x;
+        aPos.y = a.position.y;
+        aPos.z = a.position.z;
+
+        var bPos = {};
+        bPos.x = b.position.x;
+        bPos.y = b.position.y;
+        bPos.z = b.position.z;
+
+        var d = {}
+        d.x = aPos.x - bPos.x;
+        d.y = aPos.y - bPos.y;
+        d.z = aPos.z - bPos.z;
+
+        var sumRadius = a.radius + b.radius;
+    	
+        d.distance = Math.sqrt(Math.pow(d.x, 2) + Math.pow(d.y, 2) + Math.pow(d.z, 2));
+
+        if (d.distance < sumRadius) { // collision
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     ////// EVENT HANDLERS
     
     onDocumentMouseDown : function(event) {
