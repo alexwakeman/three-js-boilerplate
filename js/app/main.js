@@ -24,6 +24,9 @@ Template.Main = {
         light.position.set(0, 1, 0);
         this.scene.add(light);
         
+        this.renderer = new THREE.WebGLRenderer(); // or canvas, svg
+    	this.renderer.setSize(window.innerWidth, window.innerHeight);
+        
         this.parentObj = new THREE.Object3D();
         this.scene.add(this.parentObj);
         
@@ -43,7 +46,7 @@ Template.Main = {
     },
     
     render : function() {
-        
+        this.renderer.render(this.scene, this.camera);
     },
     
     getIntersects : function(event, parent) {
