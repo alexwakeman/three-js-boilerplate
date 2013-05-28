@@ -56,8 +56,9 @@ Template.Main = {
         var intersects = raycaster.intersectObject(parent);
         return intersects;
     },
-                                   
-    collision : function(a, b) { // both a and b are THREE.Mesh objects with radius property too!
+    
+    // both a and b are THREE.Mesh objects __with radius property__ set on each.
+    collision : function(a, b) { 
         var aPos = {};
         aPos.x = a.position.x;
         aPos.y = a.position.y;
@@ -72,6 +73,13 @@ Template.Main = {
         d.x = aPos.x - bPos.x;
         d.y = aPos.y - bPos.y;
         d.z = aPos.z - bPos.z;
+        
+        if (!a.hasOwnProperty('radius')) {
+            a.radius = 25;
+        }
+        if (!b.hasOwnProperty('radius')) {
+            b.radius = 25;
+        }
 
         var sumRadius = a.radius + b.radius;
     	
