@@ -19,9 +19,8 @@ Template.Main = {
         this.camera.position.z = 400;
         this.scene = new THREE.Scene();
         this.projector = new THREE.Projector();
-        this.scene.add( new THREE.AmbientLight(0xaaaaaa));
         var light = new THREE.DirectionalLight(0xffffff);
-        light.position.set(0, 1, 0);
+        light.position.set(0, 1, 200);
         this.scene.add(light);
         
         this.renderer = new THREE.WebGLRenderer(); // or canvas, svg
@@ -84,7 +83,11 @@ Template.Main = {
         else {
             return false;
         }
-    }
+    },
+    
+    degsToRads : function(degs) {
+        return degs * (Math.PI/180);
+    },
     ////// EVENT HANDLERS
     
     onDocumentMouseDown : function(event) {
