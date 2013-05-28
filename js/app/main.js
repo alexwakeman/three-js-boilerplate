@@ -38,7 +38,7 @@ Template.Main = {
     },
     
     animate : function() {
-        window.requestAnimationFrame(WOC.Main.animate);
+        window.requestAnimationFrame(Template.Main.animate);
         this.render();
     },
     
