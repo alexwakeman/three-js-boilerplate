@@ -42,7 +42,7 @@ Template.Main = {
     
     animate : function() {
         window.requestAnimationFrame(Template.Main.animate);
-        this.render();
+        Template.Main.render();
     },
     
     render : function() {
