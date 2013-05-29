@@ -49,11 +49,11 @@ Template.Main = {
         this.renderer.render(this.scene, this.camera);
     },
     
-    getIntersects : function(event, parent) {
+    getIntersects : function(event, obj) {
         var vector = new THREE.Vector3((event.clientX / window.innerWidth ) * 2 - 1, - (event.clientY / window.innerHeight) * 2 + 1, 0.5);
         Template.Main.projector.unprojectVector(vector, Template.Main.camera);
         var raycaster = new THREE.Raycaster(Template.Main.camera.position, vector.sub(Template.Main.camera.position).normalize());
-        var intersects = raycaster.intersectObject(parent);
+        var intersects = raycaster.intersectObject(obj); // pass mesh to check for ray intersect
         return intersects;
     },
     
